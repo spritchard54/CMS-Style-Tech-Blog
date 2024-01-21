@@ -1,0 +1,45 @@
+body {
+    background-color: #d9e9d3; 
+}
+
+.ttb {
+    color: #221010;
+    background-color: #d9e9d3;
+}
+
+header {
+    background-color: #221010;
+    padding: 40px 0px;
+}
+
+ul li {
+    font-size: larger;
+    color: #d9e9d3;
+    display: inline-block;
+    list-style: none;
+    margin-right: 50px;
+}
+
+.pageTitle {
+    background-color: #d9e9d3;
+    text-align: center;
+    border-radius: 10px;
+    width: 300px;
+    margin-left: 35px;
+    padding: 20px 20px;
+    box-shadow: 3px 3px 5px 3px gray;
+}
+
+.postHeader {
+    background-color: #221010;
+    color: darkgray;
+    padding: 10px 15px;
+}
+
+.post {
+    border: 5px solid #221010;
+}
+
+.postText {
+    padding: 10px 10px;
+}

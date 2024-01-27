@@ -1,9 +1,12 @@
 <nav>
     <div>
         <ul>
-            <li>Home</li>
+            <a href="/"><li>Home</li></a>
+              {{!-- {{#if loggedIn}} --}}
             <li>Dashboard</li>
             <li>Logout</li>
+            {{!-- {{else}} --}}
+            <a href="/login"><li>Login</li></a>
         </ul>
     </div>
 </nav>

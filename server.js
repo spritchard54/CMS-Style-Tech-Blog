@@ -1,28 +1,44 @@
-// Dependencies
 const express = require('express');
-// Import express-handlebars - 3rd party middleware
+const session = require('express-session');
+const routes = require('./controllers');
 const exphbs = require('express-handlebars');
-const hbs = exphbs.create({}); // setting up the engine
+const helpers = require('./utils/helpers');
 const path = require('path');
 
+const sequelize = require('./config/connection');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-// Sets up the Express App
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Describe what the following two lines of code are doing.
-// The following two lines of code are setting Handlebars.js as the default template engine.
-app.engine('handlebars', hbs.engine); // using the render engine
-app.set('view engine', 'handlebars'); // connect render to handlebars
+const hbs = exphbs.create({helpers});
 
-// --- after this line, you can import routes and use res.render ---
+const sess = {
+  secret: 'Super secret secret',
+  cookie: {
+    maxAge: 60 * 60 * 1000,
+    httpOnly: true,
+    secure: false,
+    sameSite: 'strict',
+  },
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize
+  })
+};
 
+app.use(session(sess));
+
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(require('./controllers/dish-routes'));
 
-  
+app.use(routes);
 
-// Starts the server to begin listening
-app.listen(PORT, () => {
-    console.log('Server listening on: http://localhost:' + PORT);
-  });
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log('Now listening http://localhost:' + PORT));
+});

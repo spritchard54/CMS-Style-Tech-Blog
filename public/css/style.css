@@ -1,5 +1,5 @@
 body {
-    background-color: #d9e9d3; 
+    background-color: #d9e9d3;
 }
 
 .ttb {
@@ -42,4 +42,57 @@ ul li {
 
 .postText {
     padding: 10px 10px;
+}
+
+/* Login Page */
+
+#loginCard {
+    border: 2px solid #221010;
+}
+
+.loginHeader {
+    background-color: #221010;
+    color: #d9e9d3;
+    padding: 15px 15px;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+#userName {
+    margin: 15px 15px;
+    color: #221010;
+    font-size: 1.2em;
+}
+
+#userPassword {
+    margin: 15px 15px;
+    color: #221010;
+    font-size: 1.2em;
+}
+
+.loginInput {
+    display: block;
+    width: 98%;
+    margin: 10px auto;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 10px;
+    outline: none;
+}
+
+.loginButton {
+    display: block;
+    background-color: rgb(116, 115, 115);
+    border-radius: 5px;
+    color: #d9e9d3;
+    margin: 20px auto;
+    padding: 10px 10px;
+    width: 98%;
+    font-size: 1.2em;
+    border: none;
+}
+
+#signup {
+    margin: 15px 15px;
+    font-size: 1.2em;
 }

@@ -1,9 +1,9 @@
-<!-- This template includes hardcoded data. In future lessons, you will be rendering data dynamically. -->
+{{#each posts as |post| }}
 <div class="menu-container">
   <div class="card-header col-md-12">
     <div class="post">
-      <h3 class="postHeader w-100">Why MVC is so important</h3>
-      <section class="postText">This is placeholder text for where the blogpost text will come from when the database is seeded.</section>
+      <h3 class="postHeader w-100">{{title}}</h3>
+      <section class="postText">{{content}}</section>
+      <section class="author">{{user.username}}</section>
     </div>
-
   </div>

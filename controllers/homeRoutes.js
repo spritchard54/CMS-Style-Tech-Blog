@@ -3,7 +3,7 @@ const router = require('express').Router();
 const withAuth = require('../utils/auth');
 const { User, Post, Comment } = require('../models');
 
-require(dotenv).config();
+// require(dotenv).config();
 
 // initial pageload content
 router.get('/', async (req, res) => {

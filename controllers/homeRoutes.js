@@ -3,14 +3,7 @@ const router = require('express').Router();
 const withAuth = require('../utils/auth');
 const { User, Post, Comment } = require('../models');
 
-// // Login route
-// router.get("/login", (req, res) => {
-//   if (req.session.loggedIn) {
-//     res.redirect("/homepage");
-//     return;
-//   }
-//   res.render("login");
-// });
+
 
 // initial pageload content
 router.get('/', async (req, res) => {
@@ -35,7 +28,7 @@ router.get('/', async (req, res) => {
     );
     res.render('homepage', {
       posts,
-      loggedIn: req.session.logged_in,
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     res.status(500).json(err.toString());
@@ -53,6 +46,22 @@ router.get('/login', async (req, res) => {
     res.status(500).json(err.toString());
   }
 });
+
+// Signup route
+router.get("/signup", (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/homepage");
+    return;
+  }
+  res.render("signup");
+});
+
+// // Homepage route
+// router.get("/homepage", (req, res) => {
+
+//   res.render("signup");
+// });
+
 
 // Get Dashboard Page
 router.get("/dashboard", async (req, res) => {

@@ -19,40 +19,29 @@ router.get('/', async (req, res) => {
 // create a user
 router.post('/', async (req, res) => {
   try {
-    const newUser = req.body;
-    if (!newUser.email) {
-      res.status(400).json({
-        message: 'Please enter a valid email.',
-      });
-    } else if (!newUser.username) {
-      res.status(400).json({
-        message: 'Please enter a valid username.',
-      });
-    } else if (!newUser.password) {
-      res.status(400).json({
-        message: 'Please enter a valid password.',
-      });
-    } else {
-      const userData = await User.create(req.body);
+    const userData = await User.create({
+      username: req.body.username,
+      password: req.body.password,
+      email: req.body.email,
+    });
+    req.session.save(() => {
+      req.session.userId = userData.id;
+      req.session.loggedIn = true;
 
-      // save user data for future login
-      req.session.save(() => {
-        (req.session.user_id = userData.id),
-          (req.session.logged_in = true),
-          (req.session.user_name = userData.username);
-
-        res.status(200).json(userData);
-      });
-    }
+      res
+        .status(200)
+        .json({ user: userData, message: 'You are now signed in!' });
+    });
   } catch (err) {
-    res.status(500).json(err.toString());
+    console.error(err);
+    res.status(400).json(err);
   }
 });
 
 // User login route
 router.post('/login', async (req, res) => {
   try {
-    // Find user by email
+    // Find user by username
     const userData = await User.findOne({
       where: {
         username: req.body.username,
@@ -66,10 +55,8 @@ router.post('/login', async (req, res) => {
       return;
     }
     // Password Vaildation
-    const validPassword = await bcrypt.compareSync(
-      req.body.password,
-      userData.password
-    );
+    const validPassword = userData.checkPassword(req.body.password);
+
     if (!validPassword) {
       console.log('bad password');
       res.status(400).json({
@@ -78,13 +65,13 @@ router.post('/login', async (req, res) => {
       return;
     }
     // Save user information for future reference
-    (req.session.user_id = userData.id),
-      (req.session.logged_in = true),
-      (req.session.user_name = userData.username);
+    req.session.save(() => {
+      req.session.userId = userData.id;
+      req.session.loggedIn = true;
 
-    res.json({
-      user: userData,
-      message: 'Your are now logged in!',
+      res
+        .status(200)
+        .json({ user: userData, message: 'You are now signed in!' });
     });
   } catch (err) {
     console.error(err);

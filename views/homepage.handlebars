@@ -3,11 +3,12 @@
     <div class='card-header col-md-12'>
       <div class='post'>
 
-        <h3 class='postHeader w-100'>{{title}}</h3>
         {{#each posts as |post|}}
+          <h3 class='postHeader w-100'>{{title}}</h3>
           <section class='postText'>{{content}}</section>
+          <section class='author'>{{user.username}}</section>
         {{/each}}
-        <section class='author'>{{user.username}}</section>
+
       </div>
     </div>
   </div>

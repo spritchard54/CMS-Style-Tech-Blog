@@ -1,12 +1,15 @@
 <nav>
-    <div>
-        <ul>
-            <a href="/"><li>Home</li></a>
-         
-            <a href="/dashboard"><li>Dashboard</li></a>
-            <li>Logout</li>
-           
-            <a href="/login"><li>Login</li></a>
-        </ul>
-    </div>
+  <div>
+    <ul>
+      <a href='/'><li>Home</li></a>
+
+      <a href='/dashboard'><li>Dashboard</li></a>
+      <li>Logout</li>
+      {{#if loggedIn}}
+        <a href='#' id='logout'><li>Login</li></a>
+      {{else}}
+        <a href='/login'><li>Login</li></a>
+      {{/if}}
+    </ul>
+  </div>
 </nav>

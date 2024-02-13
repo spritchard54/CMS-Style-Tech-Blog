@@ -90,7 +90,13 @@ ul li {
     width: 98%;
     font-size: 1.2em;
     border: none;
+    box-shadow: 0 3px #888;
 }
+
+.loginButton:active {
+    box-shadow: 0 5px #555;
+    transform: translateY(5px);
+  }
 
 #signup {
     margin: 15px 15px;

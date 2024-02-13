@@ -3,7 +3,14 @@ const router = require('express').Router();
 const withAuth = require('../utils/auth');
 const { User, Post, Comment } = require('../models');
 
-// require(dotenv).config();
+// // Login route
+// router.get("/login", (req, res) => {
+//   if (req.session.loggedIn) {
+//     res.redirect("/homepage");
+//     return;
+//   }
+//   res.render("login");
+// });
 
 // initial pageload content
 router.get('/', async (req, res) => {

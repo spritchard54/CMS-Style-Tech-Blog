@@ -1,17 +1,19 @@
-<div id="loginCard" style=".w-75">
-    <div class="loginHeader">
-        Login
+<div id='loginCard' style='.w-75'>
+  <form id='loginForm'>
+    <div class='loginHeader'>
+      Login
     </div>
-    <div id="#email-login">
-        Username
+    <div id='userName'>
+      Username
     </div>
-    <input class="loginInput">
-    <div id="password-login">
-        Password
+    <input id="user-login" class='loginInput' />
+    <div id='password-login'>
+      Password
     </div>
-    <input class="loginInput">
-    <button class="loginButton">Login!</button>
-    <div id="signup"><a href="/signup">Sign Up Instead</a></div>
+    <input id="user-password" class='loginInput' />
+    <button class='loginButton' type='submit'>Login!</button>
+    <div id='signup'><a href='/signup'>Sign Up Instead</a></div>
+  </form>
 </div>
 
-<script src="/js/login.js"></script>
+<script src='./js/login.js'></script>

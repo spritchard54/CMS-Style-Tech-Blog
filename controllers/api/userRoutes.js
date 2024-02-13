@@ -38,8 +38,8 @@ router.post('/', async (req, res) => {
       // save user data for future login
       req.session.save(() => {
         (req.session.user_id = userData.id),
-        (req.session.logged_in = true),
-        (req.session.user_name = userData.username);
+          (req.session.logged_in = true),
+          (req.session.user_name = userData.username);
 
         res.status(200).json(userData);
       });
@@ -58,31 +58,36 @@ router.post('/login', async (req, res) => {
         username: req.body.username,
       },
     });
+    console.log(userData);
+
     if (!userData) {
+      console.log('server side here');
       res.status(404).json({ message: 'Login failed. Please try again.' });
       return;
     }
     // Password Vaildation
-    const validPassword = await bcrypt.compare(
+    const validPassword = await bcrypt.compareSync(
       req.body.password,
       userData.password
     );
     if (!validPassword) {
-      res
-        .status(400)
-        .json({ massage: 'Your email or password are incorrect. Please try again.' });
+      console.log('bad password');
+      res.status(400).json({
+        message: 'Your email or password are incorrect. Please try again.',
+      });
       return;
     }
     // Save user information for future reference
     (req.session.user_id = userData.id),
-    (req.session.logged_in = true),
-    (req.session.user_name = userData.username);
+      (req.session.logged_in = true),
+      (req.session.user_name = userData.username);
 
     res.json({
       user: userData,
       message: 'Your are now logged in!',
     });
   } catch (err) {
+    console.error(err);
     res.status(500).json(err.toString());
   }
 });

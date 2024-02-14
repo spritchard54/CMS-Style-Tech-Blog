@@ -30,18 +30,41 @@ ul li {
     box-shadow: 3px 3px 5px 3px gray;
 }
 
+#postContainer {
+    background-color: red;
+    padding: 2% 2%;
+    /* background-color: #221010; */
+}
+
 .postHeader {
+    float: left;
     background-color: #221010;
-    color: darkgray;
-    padding: 10px 15px;
+    color: #d9e9d3;
+    font-size: x-large;
+    padding: 10px 10px;
+
+    
+    
+}
+.author {
+    width: 50%;
+    background-color: #221010;
+    color: #d9e9d3;
+    float: right;
+    text-align: end;
+    padding: 15px 15px;
 }
 
 .post {
     border: 5px solid #221010;
+    font-size: larger;
+    
 }
 
 .postText {
-    padding: 10px 10px;
+    width: 100%;
+    /* padding: 10px 10px;
+    margin: 15px 15px; */
 }
 
 /* Login Page */
@@ -102,3 +125,4 @@ ul li {
     margin: 15px 15px;
     font-size: 1.2em;
 }
+

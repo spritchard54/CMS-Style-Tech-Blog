@@ -1,6 +1,17 @@
 <div id='loginCard' style='.w-75'>
   
 <div>
+    <div class="post">
+        {{#each posts as |post|}}
+         
+          <p class='postHeader w-50'>{{title}}</p>
+          
+          <p class='author'>Posted by {{user.username}}</p>
+      
+          <p class='postText'>{{content}}</p>
+        {{/each}}
+
+    </div>
     <button>
         <p>
             + New Post

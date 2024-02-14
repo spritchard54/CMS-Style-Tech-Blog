@@ -3,8 +3,6 @@ const router = require('express').Router();
 const withAuth = require('../utils/auth');
 const { User, Post, Comment } = require('../models');
 
-
-
 // initial pageload content
 router.get('/', async (req, res) => {
   try {
@@ -38,42 +36,35 @@ router.get('/', async (req, res) => {
 // Get Login Page
 router.get('/login', async (req, res) => {
   try {
-    res.render("login", {
-      loggedIn: req.session.logged_in,
+    res.render('login', {
+      loggedIn: req.session.loggedIn,
       userName: req.session.user_name,
     });
-  } catch(err) {
+  } catch (err) {
     res.status(500).json(err.toString());
   }
 });
 
 // Signup route
-router.get("/signup", (req, res) => {
+router.get('/signup', (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect("/homepage");
+    res.redirect('/homepage');
     return;
   }
-  res.render("signup");
+  res.render('signup');
 });
 
-// // Homepage route
-// router.get("/homepage", (req, res) => {
-
-//   res.render("signup");
-// });
-
-
 // Get Dashboard Page
-router.get("/dashboard", async (req, res) => {
+router.get('/dashboard', async (req, res) => {
   try {
-    if(!req.session.logged_in){
+    if (!req.session.loggedIn) {
       res.render('login', {
-        loggedIn: req.session.logged_in,
+        loggedIn: req.session.loggedIn,
         userName: req.session.user_name,
-      })
+      });
     } else {
-      res.render("dashboard", {
-        loggedIn: req.session.logged_in,
+      res.render('dashboard', {
+        loggedIn: req.session.loggedIn,
         userName: req.session.user_name,
       });
     }

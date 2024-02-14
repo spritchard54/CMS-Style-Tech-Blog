@@ -2,13 +2,13 @@
   <div class='menu-container'>
     <div class='card-header col-md-12'>
       <div class='post'>
-
         {{#each posts as |post|}}
-          <h3 class='postHeader w-100'>{{title}}</h3>
-          <section class='postText'>{{content}}</section>
-          <section class='author'>{{user.username}}</section>
+          {{! <div id="postContainer"> }}
+          <p class='postHeader w-50'>{{title}}</p>
+          <p class='author'>Posted by {{user.username}}</p>
+          {{! </div> }}
+          <p class='postText'>{{content}}</p>
         {{/each}}
-
       </div>
     </div>
   </div>

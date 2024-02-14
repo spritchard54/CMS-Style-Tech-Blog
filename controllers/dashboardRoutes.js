@@ -33,7 +33,7 @@ router.get('/', withAuth, async (req, res) => {
     const posts = postData.map((post) => post.get({ plain: true }));
     res.render('dashboard', {
       posts,
-      loggedIn: req.session.logged_in,
+      loggedIn: req.session.loggedIn,
       userName: req.session.user_name,
     });
   } catch (err) {

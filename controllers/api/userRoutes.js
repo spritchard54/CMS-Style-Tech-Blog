@@ -80,15 +80,16 @@ router.post('/login', async (req, res) => {
 });
 
 // Logout route
-router.post('/logout', withAuth, (req, res) => {
-  try {
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
     });
-  } catch (err) {
-    res.status(500).json(err.toString());
+  } else {
+    res.status(404).end();
   }
 });
+
 
 // Delete user by ID
 router.delete('/delete', withAuth, async (req, res) => {

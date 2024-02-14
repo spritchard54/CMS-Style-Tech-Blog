@@ -1,22 +1,18 @@
 <div id='loginCard' style='.w-75'>
-  
-<div>
-    <div class="post">
-        {{#each posts as |post|}}
-         
-          <p class='postHeader w-50'>{{title}}</p>
-          
-          <p class='author'>Posted by {{user.username}}</p>
-      
-          <p class='postText'>{{content}}</p>
-        {{/each}}
 
+  <div>
+    <div class='post'>
+     <form>
+        <p class="dashP">Title</p>
+        <input id="title-input" class="dInput" type="text">
+
+        <p class="dashP">Content</p>
+        <textarea id="content-input" class="dInput"></textarea>
+     </form>
     </div>
-    <button>
-        <p>
-            + New Post
-        </p>
-    </button>
-</div>
+  </div>
 
 </div>
+<button id='newPostBtn'>
+  + New Post
+</button>

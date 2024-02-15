@@ -2,18 +2,20 @@ const sequelize = require('../config/connection');
 const withAuth = require('../utils/auth');
 const { User, Post, Comment } = require('../models');
 const router = require('express').Router();
-require('dotenv').config();
 
 // dashboard
 
 // Get all posts by logged in user
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
+  console.log('line 10');
   try {
+    console.log(req);
     const postData = await Post.findAll({
+     // requesting only posts by the logged in user
       where: {
-        user_id: req.session.user_id,
+        user_id: req.session.userId,
       },
-      // Return title, content, and username of the post
+      // Return title, content, and username of the post for the logged in users
       attributes: ['id', 'title', 'content'],
       include: [
         {

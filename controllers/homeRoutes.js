@@ -54,23 +54,4 @@ router.get('/signup', (req, res) => {
   res.render('signup');
 });
 
-// Get Dashboard Page
-router.get('/dashboard', async (req, res) => {
-  try {
-    if (!req.session.loggedIn) {
-      res.render('login', {
-        loggedIn: req.session.loggedIn,
-        userName: req.session.user_name,
-      });
-    } else {
-      res.render('dashboard', {
-        loggedIn: req.session.loggedIn,
-        userName: req.session.user_name,
-      });
-    }
-  } catch (err) {
-    res.status(500).json(err.toString());
-  }
-});
-
 module.exports = router;

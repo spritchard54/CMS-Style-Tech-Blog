@@ -139,7 +139,7 @@ ul li {
 }
 
 /* Dashboard */
-#newPostBtn {
+#newPostBtn, #post-submit {
     background-color: #221010;
     color: white;
     font-size: x-large;

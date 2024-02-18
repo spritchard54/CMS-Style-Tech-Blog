@@ -1,40 +1,18 @@
- <div id='previous-posts'>
-    This is where I expect to see the previous user posts
-    <div class='menu-container'>
-      <div class='card-header col-md-12'>
-        <div class='post'>
-          {{#each posts as |post|}}
-          
-            <p class='postHeader w-50'>I should see the title here{{title}}</p>
-            <p class='author'>Posted by {{user.username}}</p>
-           
-            <p class='postText'>I dont see anything{{content}}</p>
-          {{/each}}
-        </div>
+<div id='previous-posts'>
+  <div class='menu-container'>
+    <div class='card-header col-md-12'>
+      <div class='post'>
+        {{#each posts as |post|}}
+          <p class='postHeader w-50'>{{title}}</p>
+          <p class='author'>Posted by {{user.username}}</p>
+          <p class='postText'>{{content}}</p>
+        {{/each}}
       </div>
     </div>
   </div>
-
-
-
-
-
-<div id='loginCard' style='.w-75'>
-  <div>
-    <div class='post'>
-      <form id='new-post'>
-        <p class='dashP'>Title</p>
-        <input id='title-input' class='dInput' type='text' />
-
-        <p class='dashP'>Content</p>
-        <textarea id='content-input' class='dInput'></textarea>
-      </form>
-    </div>
-  </div>
-
+  <a href='dashboard/post'>
+    <button id='newPostBtn'>
+      + New Post
+    </button>
+  </a>
 </div>
-<button type='submit' id='newPostBtn'>
-  + New Post
-</button>
-
-<script src='./js/post.js'></script>

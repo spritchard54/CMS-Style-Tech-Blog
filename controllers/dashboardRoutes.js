@@ -5,11 +5,17 @@ const router = require('express').Router();
 
 // dashboard
 
+// posts 
+
+router.get('/post', async (req, res) => {
+    res.render('post', {
+    loggedIn: req.session.loggedIn  
+    });
+});
+
 // Get all posts by logged in user
 router.get('/', async (req, res) => {
-  console.log('line 10');
   try {
-    console.log(req);
     const postData = await Post.findAll({
      // requesting only posts by the logged in user
       where: {

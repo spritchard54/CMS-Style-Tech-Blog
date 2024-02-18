@@ -7,11 +7,11 @@ const router = require('express').Router();
 
 // posts 
 
-router.get('/post', async (req, res) => {
-    res.render('post', {
-    loggedIn: req.session.loggedIn  
-    });
-});
+// router.get('/api/post', async (req, res) => {
+//     res.render('post', {
+//     loggedIn: req.session.loggedIn  
+//     });
+// });
 
 // Get all posts by logged in user
 router.get('/', async (req, res) => {

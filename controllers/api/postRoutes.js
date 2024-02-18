@@ -31,14 +31,22 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get('/new', async (req, res) => {
+      res.render('post', {
+      loggedIn: req.session.loggedIn  
+      });
+  });
+
+
 // Create new post
-router.post("/", withAuth, async (req, res) => {
+router.post("/new", withAuth, async (req, res) => {
   try {
     const postData = await Post.create({
       title: req.body.title,
       content: req.body.content,
       user_id: req.session.user_id,
     });
+    console.log(postData); //Console
     res.status(200).json(postData);
   } catch (err) {
     res.status(500).json(err.toString());
